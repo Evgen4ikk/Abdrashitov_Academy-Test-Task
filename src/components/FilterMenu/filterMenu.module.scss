@@ -1,0 +1,182 @@
+.menu {
+	width: 295px;
+	height: 500px;
+	background-color: #ffffff;
+	border-radius: 10px;
+
+	.title {
+		position: relative;
+		color: #0c131d;
+		padding: 12px 16px;
+		font-size: 14px;
+		font-weight: 600;
+
+		&:after {
+			border-bottom: 1px solid #e1e5ec;
+			bottom: 0;
+			content: '';
+			left: 16px;
+			position: absolute;
+			right: 16px;
+		}
+	}
+
+	.checkbox {
+		display: flex;
+		flex-direction: column;
+		padding: 12px 16px 0px 16px;
+
+		.label {
+			position: relative;
+			margin-bottom: 16px;
+
+			.input {
+				display: none;
+
+				&:checked + .mark {
+					background-color: #0c73fe;
+				}
+			}
+
+			.mark {
+				position: absolute;
+				top: 50%;
+				left: 0;
+				transform: translateY(-50%);
+				width: 23px;
+				height: 23px;
+				background-color: transparent;
+				border: 1px solid #575757;
+				cursor: pointer;
+				border-radius: 5px;
+
+				&:after {
+					content: '\2714';
+					color: white;
+					font-size: 16px;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					display: none;
+				}
+			}
+
+			.input:checked + .mark:after {
+				display: block;
+			}
+
+			.name {
+				margin-left: 35px;
+				color: #0c131d;
+			}
+		}
+	}
+
+	.price-slider {
+		padding: 20px;
+		max-width: 400px;
+		margin: 0 auto;
+
+		.rc-slider {
+			margin-top: 10px;
+			margin-bottom: 20px;
+
+			.rc-slider-track {
+				background-color: #0c73fe;
+			}
+
+			.rc-slider-handle {
+				border: 2px solid #0c73fe;
+				background-color: #fff;
+				width: 20px;
+				height: 20px;
+				margin-top: -8px;
+			}
+
+			.rc-slider-handle:hover {
+				border-color: #0c73fe;
+			}
+
+			.rc-slider-handle:focus {
+				box-shadow: none;
+			}
+
+			.rc-slider-mark-text {
+				font-size: 12px;
+				color: #333;
+			}
+		}
+
+		.price-label {
+			display: flex;
+			justify-content: space-between;
+			text-align: center;
+			font-size: 16px;
+			color: #333;
+			margin-bottom: 10px;
+
+			.total {
+				color: #0c131d;
+				font-size: 14px;
+			}
+
+			.max-price {
+				color: #9ea9b7;
+				background-color: rgba(76, 84, 97, 0.04);
+				padding: 3px 6px;
+				border-radius: 10px;
+			}
+		}
+	}
+
+	.radio {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		padding: 0px 16px 12px 16px;
+
+		.input {
+			position: absolute;
+			opacity: 0;
+			cursor: pointer;
+
+			&:checked + .mark {
+				background-color: #0c73fe; // Цвет фона (можете изменить на ваш)
+				border: 2px solid #0c73fe; // Цвет обводки при выборе
+
+				&::before {
+					content: '';
+					display: block;
+					width: 9px; // Размер внутреннего круга
+					height: 9px; // Размер внутреннего круга
+					border-radius: 50%;
+					background-color: #fff; // Цвет внутреннего круга
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+				}
+			}
+		}
+
+		.mark {
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			border: 2px solid #333;
+			margin-right: 10px;
+			position: relative;
+		}
+
+		.name {
+			font-size: 16px;
+		}
+	}
+
+	.time {
+		.radio {
+			padding-top: 16px;
+		}
+	}
+}

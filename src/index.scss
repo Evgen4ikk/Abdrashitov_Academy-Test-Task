@@ -1,0 +1,16 @@
+@import './components/Header/header.module.scss';
+@import './components/main/main.module.scss';
+@import './components/FilterMenu/filterMenu.module.scss';
+@import './components/TicketList/ticketList.module.scss';
+@import './components/TicketItem/ticketItem.module.scss';
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #eff1f4;
+	font-family: -apple-system,BlinkMacSystemFont,Inter,Roboto,Helvetica,Arial,sans-serif;
+}

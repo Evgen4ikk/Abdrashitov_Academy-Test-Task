@@ -1,10 +1,13 @@
-function App() {
+import Header from './components/Header/Header'
+import Main from './components/Main/Main'
 
-  return (
-    <>
-      Vite
-    </>
-  )
+function App() {
+	return (
+		<>
+			<Header />
+			<Main />
+		</>
+	)
 }
 
 export default App
