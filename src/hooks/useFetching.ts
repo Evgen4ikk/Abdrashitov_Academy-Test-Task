@@ -1,18 +1,26 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
-export const useFetching = (callback: any) => {
-	const [isLoading, setIsLoading] = useState(false)
-	const [error,setError] = useState('')
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type CallbackFunction = (...args: any[]) => Promise<void>;
 
-	const fetching = async (...args: any) => {
-		try {
-			setIsLoading(true)
-			await callback(...args)
-		} catch (e) {
-			setError(e.massage)
-		} finally {
-			setIsLoading(false)
-		}
-	}
-	return [fetching, isLoading, error]
-}
+export const useFetching = (
+  callback: CallbackFunction
+): [CallbackFunction, boolean, string] => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const fetching: CallbackFunction = async (...args: any[]) => {
+    try {
+      setIsLoading(true);
+      await callback(...args);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (e: any) {
+      setError(e.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return [fetching, isLoading, error];
+};

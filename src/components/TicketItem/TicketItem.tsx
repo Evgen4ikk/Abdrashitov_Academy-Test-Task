@@ -57,7 +57,7 @@ const TicketItem: FC<ITicketItem> = ({ ticket }) => {
                 <PiAirplaneLandingLight size={20} />
               </div>
 
-              {ticket.number_of_changes === 0 && <div className='transit'/>}
+              {ticket.number_of_changes === 0 && <div className='transit' />}
 
               {ticket.number_of_changes === 1 && (
                 <div className='transfers'>
