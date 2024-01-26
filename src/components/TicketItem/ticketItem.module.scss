@@ -1,14 +1,159 @@
 .ticket {
-	width: 100%;
-	background-color: #ffffff;
-	border-radius: 10px;
-	margin: 0px 0px 10px 10px;
+  width: 630px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 0px 0px 10px 10px;
 
-	.container {
-		padding: 10px;
-	}
+  .container {
+    padding: 30px;
+    width: 100%;
+  }
 
-	.title {
-		
-	}
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .price {
+      font-size: 23px;
+      color: #0c131d;
+      font-weight: 600;
+    }
+
+    .gate {
+      font-size: 20px;
+      font-weight: 400;
+      font-style: italic;
+    }
+  }
+
+  .information {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+
+    .btn {
+      height: 48px;
+      padding: 12px 20px;
+      font-weight: 600;
+      font-size: 20px;
+      color: #fff;
+      background-color: #ff6f32;
+      outline: none;
+      border: none;
+      border-radius: 10px;
+      margin-right: 20px;
+
+      &:hover {
+        background: #d65d2a;
+        transition: 0.1s ease-in;
+      }
+    }
+
+    .hours {
+      font-size: 23px;
+    }
+    .city {
+      margin: 3px 0;
+      color: #9ea9b7;
+      font-size: 16px;
+    }
+
+    .time {
+      color: #9ea9b7;
+      font-size: 16px;
+    }
+
+    .road {
+      width: 100%;
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .departure {
+      margin-right: 10px;
+      .travel-time {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        span {
+          color: #9ea9b7;
+        }
+      }
+
+      .transit {
+        margin: 10px 0;
+        width: 300px;
+        height: 6px;
+        border-radius: 10px;
+        background-color: #cdd4de;
+      }
+
+      .transfer {
+        margin: 10px 0;
+        width: 300px;
+        height: 6px;
+        border-radius: 10px;
+        background-color: #cdd4de;
+      }
+
+      .transfers {
+        display: flex;
+        align-items: center;
+      }
+
+      .transfer {
+        position: relative;
+        text-align: center;
+        width: 30px;
+        height: 1px;
+        border-radius: 10px;
+        background-color: #cdd4de;
+
+        span {
+          position: absolute;
+          top: 15px;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: #aaa;
+        }
+      }
+
+      .one-transfer {
+        margin: 10px 0;
+        width: 110px;
+        height: 6px;
+        border-radius: 10px;
+        background-color: #cdd4de;
+      }
+
+      .two-transfer {
+        margin: 10px 0;
+        width: 70px;
+        height: 6px;
+        border-radius: 10px;
+        background-color: #cdd4de;
+      }
+
+      .three-transfer {
+        margin: 10px 0;
+        width: 40px;
+        height: 6px;
+        border-radius: 10px;
+        background-color: #cdd4de;
+      }
+
+      .city {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        font-size: 14px;
+        color: #0c73fe;
+      }
+    }
+  }
 }

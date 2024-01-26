@@ -1,20 +1,133 @@
-import { FC } from 'react'
-import { ITickets } from '../../types/ITickets'
+import { FC } from 'react';
+import { PiAirplaneLandingLight, PiAirplaneTakeoffThin } from 'react-icons/pi';
+import { TbTransfer } from 'react-icons/tb';
+import { ITickets } from '../../types/ITickets';
+import { calculateArrivalTime } from '../../utils/calculateArrivalTime';
+import { formatPrice } from '../../utils/formatPrice';
+import { formatDateTime } from '../../utils/formattedDataTime';
 
 interface ITicketItem {
-	ticket: ITickets
+  ticket: ITickets;
 }
 
 const TicketItem: FC<ITicketItem> = ({ ticket }) => {
-	console.log(ticket)
-	return <div className='ticket'>
-		<div className="container">
-			<div className="title">
-				<div className="price">{ticket.value} ₽</div>
-				<div className="gate">{ticket.gate}</div>
-			</div>
-		</div>
-	</div>
-}
+  const dataTime = formatDateTime(ticket.found_at);
 
-export default TicketItem
+  function calculateFlightTime(minutes: number): string {
+    const roundedMinutes = Math.round(minutes);
+
+    const flightHours = Math.floor(roundedMinutes / 60);
+
+    const flightMinutes = roundedMinutes % 60;
+
+    const formattedTime = `${flightHours} ч ${flightMinutes} мин`;
+
+    return formattedTime;
+  }
+
+  const flightInfo = {
+    departureTime: `${dataTime.formattedTime}`,
+    date: `${dataTime.day} ${dataTime.month}`,
+    travelTime: `${calculateFlightTime(ticket.duration)}`,
+  };
+
+  const arrivalInfo = calculateArrivalTime(flightInfo);
+
+  return (
+    <div className='ticket'>
+      <div className='container'>
+        <div className='title'>
+          <div className='price'>{formatPrice(ticket.value)} ₽</div>
+          <div className='gate'>{ticket.gate}</div>
+        </div>
+        <div className='information'>
+          <button className='btn'>Купить</button>
+          <div className='road'>
+            <div className='data'>
+              <div className='hours'>{dataTime.formattedTime}</div>
+              <div className='city'>{ticket.origin}</div>
+              <div className='time'>
+                {dataTime.day} {dataTime.month}
+              </div>
+            </div>
+            <div className='departure'>
+              <div className='travel-time'>
+                <PiAirplaneTakeoffThin size={20} />
+                <span>В пути {calculateFlightTime(ticket.duration)}</span>
+                <PiAirplaneLandingLight size={20} />
+              </div>
+
+              {ticket.number_of_changes === 0 && <div className='transit'/>}
+
+              {ticket.number_of_changes === 1 && (
+                <div className='transfers'>
+                  <div className='one-transfer' />
+                  <div className='transfer'>
+                    <span>
+                      <TbTransfer />
+                    </span>
+                  </div>
+                  <div className='one-transfer' />
+                </div>
+              )}
+
+              {ticket.number_of_changes === 2 && (
+                <div className='transfers'>
+                  <div className='two-transfer' />
+                  <div className='transfer'>
+                    <span>
+                      <TbTransfer />
+                    </span>
+                  </div>
+                  <div className='two-transfer' />
+                  <div className='transfer'>
+                    <span>
+                      <TbTransfer />
+                    </span>
+                  </div>
+                  <div className='two-transfer' />
+                </div>
+              )}
+
+              {ticket.number_of_changes === 3 && (
+                <div className='transfers'>
+                  <div className='three-transfer' />
+                  <div className='transfer'>
+                    <span>
+                      <TbTransfer />
+                    </span>
+                  </div>
+                  <div className='three-transfer' />
+                  <div className='transfer'>
+                    <span>
+                      <TbTransfer />
+                    </span>
+                  </div>
+                  <div className='three-transfer' />
+                  <div className='transfer'>
+                    <span>
+                      <TbTransfer />
+                    </span>
+                  </div>
+                  <div className='three-transfer' />
+                </div>
+              )}
+
+              <div className='city'>
+                <div>{ticket.origin}</div>
+                <div>{ticket.destination}</div>
+              </div>
+            </div>
+            <div className='data'>
+              <div className='hours'>{arrivalInfo.arrivalTime}</div>
+              <div className='city'>{ticket.destination}</div>
+              <div className='time'>{arrivalInfo.arrivalDate}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TicketItem;
