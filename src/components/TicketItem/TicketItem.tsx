@@ -3,6 +3,7 @@ import { PiAirplaneLandingLight, PiAirplaneTakeoffThin } from 'react-icons/pi';
 import { TbTransfer } from 'react-icons/tb';
 import { ITickets } from '../../types/ITickets';
 import { calculateArrivalTime } from '../../utils/calculateArrivalTime';
+import { calculateFlightTime } from '../../utils/calculateFlightTime';
 import { formatPrice } from '../../utils/formatPrice';
 import { formatDateTime } from '../../utils/formattedDataTime';
 
@@ -12,18 +13,6 @@ interface ITicketItem {
 
 const TicketItem: FC<ITicketItem> = ({ ticket }) => {
   const dataTime = formatDateTime(ticket.found_at);
-
-  function calculateFlightTime(minutes: number): string {
-    const roundedMinutes = Math.round(minutes);
-
-    const flightHours = Math.floor(roundedMinutes / 60);
-
-    const flightMinutes = roundedMinutes % 60;
-
-    const formattedTime = `${flightHours} ч ${flightMinutes} мин`;
-
-    return formattedTime;
-  }
 
   const flightInfo = {
     departureTime: `${dataTime.formattedTime}`,

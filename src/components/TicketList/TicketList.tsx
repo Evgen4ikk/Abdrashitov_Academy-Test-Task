@@ -1,8 +1,10 @@
 import { FC, useEffect, useState } from 'react';
 import TicketService from '../../api/TicketService';
 import { useFetching } from '../../hooks/useFetching';
+import { useOutside } from '../../hooks/useOutside';
 import { ITickets } from '../../types/ITickets';
 import TicketItem from '../TicketItem/TicketItem';
+import ModalWindow from '../modlalWindow/ModalWindow'
 
 interface ITicketListProps {
   transfers: number[];
@@ -68,6 +70,17 @@ const TicketList: FC<ITicketListProps> = ({
     ? sortedTicketsByPrice
     : sortedTicketsByDuration;
 
+  const [selectedTicket, setSelectedTicket] = useState<ITickets | null>(null);
+  const { ref } = useOutside(!!selectedTicket);
+
+  const handleItemClick = (ticket: ITickets) => {
+    setSelectedTicket(ticket);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedTicket(null);
+  };
+
   return (
     <div className='list'>
       {isTicketsLoading ? (
@@ -81,11 +94,19 @@ const TicketList: FC<ITicketListProps> = ({
           ) : (
             <>
               {sortedTickets.map((ticket: ITickets) => (
-                <TicketItem ticket={ticket} />
+                <div onClick={() => handleItemClick(ticket)}>
+                  <TicketItem ticket={ticket} />
+                </div>
               ))}
             </>
           )}
         </>
+      )}
+      {selectedTicket && (
+        <div ref={ref}>
+          <div className='backdrop' onClick={handleCloseModal}></div>
+          <ModalWindow ticket={selectedTicket} onClose={handleCloseModal} />
+        </div>
       )}
     </div>
   );

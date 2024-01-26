@@ -2,17 +2,17 @@
 @import './components/main/main.module.scss';
 @import './components/TicketList/ticketList.module.scss';
 @import './components/TicketItem/ticketItem.module.scss';
+@import './components/modlalWindow/modalWindow.module.scss';
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
 }
 
 body {
   background-color: #eff1f4;
-  font-family: -apple-system, BlinkMacSystemFont, Inter, Roboto, Helvetica,
-    Arial, sans-serif;
 }
 
 .menu {
@@ -196,4 +196,14 @@ body {
       padding-top: 16px;
     }
   }
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
 }

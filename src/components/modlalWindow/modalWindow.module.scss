@@ -1,0 +1,102 @@
+.modal {
+  background: #eff1f4;
+  width: 50%;
+  height: 90%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+
+  .container {
+    position: relative;
+    margin: 50px 40px;
+  }
+
+  .mb-10px {
+    margin: 10px 0px;
+  }
+
+  span.title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .close {
+    cursor: pointer;
+    position: absolute;
+    color: #0c73fe;
+    top: -45px;
+    right: -35px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+
+    svg {
+      margin-top: 6px;
+    }
+  }
+
+  .price {
+    background-color: #fff;
+    padding: 20px;
+    font-size: 22px;
+  }
+
+  .route {
+    font-family: -apple-system, BlinkMacSystemFont, Inter, Roboto, Helvetica,
+      Arial, sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 20px;
+
+    .time {
+      margin-top: 3px;
+      color: #5a6472;
+      font-size: 13px;
+      font-weight: 500;
+    }
+  }
+
+  .information {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 50%;
+
+    &-container {
+      padding: 20px 30px;
+
+      .flight-class {
+        span:last-child {
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+
+      .gate {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .total-price {
+    color: #0c131d;
+
+    position: absolute;
+    right: 20px;
+    top: 60px;
+    background: #fff;
+    padding: 10px 40px;
+    border-radius: 10px;
+  }
+
+  .relevant{
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+  }
+
+  .rub {
+	font-size: 22px;
+  }
+}
