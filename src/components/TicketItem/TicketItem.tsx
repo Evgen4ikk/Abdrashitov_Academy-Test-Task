@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { IoMdArrowForward } from 'react-icons/io';
 import { PiAirplaneLandingLight, PiAirplaneTakeoffThin } from 'react-icons/pi';
 import { TbTransfer } from 'react-icons/tb';
 import { ITickets } from '../../types/ITickets';
@@ -38,6 +39,9 @@ const TicketItem: FC<ITicketItem> = ({ ticket }) => {
               <div className='time'>
                 {dataTime.day} {dataTime.month}
               </div>
+            </div>
+            <div className='arrow'>
+              <IoMdArrowForward size={26}/>
             </div>
             <div className='departure'>
               <div className='travel-time'>

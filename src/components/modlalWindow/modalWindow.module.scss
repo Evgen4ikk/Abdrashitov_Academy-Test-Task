@@ -90,13 +90,92 @@
     border-radius: 10px;
   }
 
-  .relevant{
-	display: flex;
-	align-items: center;
-	font-size: 16px;
+  .relevant {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
   }
 
   .rub {
-	font-size: 22px;
+    font-size: 22px;
+  }
+
+  @media screen and (max-width: 1366px) {
+    .close {
+      cursor: pointer;
+      position: absolute;
+      color: #0c73fe;
+      top: -5px;
+      right: 0px;
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+
+      svg {
+        margin-top: 6px;
+      }
+    }
+
+    .route {
+      margin-top: 50px;
+      margin-bottom: 0px;
+    }
+
+    .total-price {
+      width: 50%;
+      color: #0c131d;
+      position: static;
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 20px;
+      place-items: center;
+      margin: 0 auto;
+      text-align: center;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .close {
+      cursor: pointer;
+      position: absolute;
+      color: #0c73fe;
+      top: -5px;
+      right: 0px;
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+
+      svg {
+        margin-top: 6px;
+      }
+    }
+
+    .route {
+      margin-top: 50px;
+      margin-bottom: 0px;
+    }
+
+    .total-price {
+      padding: 20px 5px;
+    }
+
+    .information-container {
+      padding: 20px 10px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      place-items: center;
+      margin: 0 auto;
+    }
   }
 }

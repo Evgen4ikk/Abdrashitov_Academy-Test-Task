@@ -47,7 +47,13 @@ const ModalWindow: FC<ModalWindowProps> = ({ ticket, onClose }) => {
             <IoMdClose size={24} />
           </span>
         </div>
-        <div className='total-price'>
+        <div className='route'>
+          {ticket.origin}&nbsp;— {ticket.destination}
+          <div className='time'>
+            {calculateFlightTime(ticket.duration)} в пути
+          </div>
+        </div>
+        <div className='total-price mb-10px'>
           <span className='title'>Цена: </span>
           <span className='rub'>{formatPrice(ticket.value)} ₽</span>
           <div>
@@ -62,12 +68,6 @@ const ModalWindow: FC<ModalWindowProps> = ({ ticket, onClose }) => {
                 <IoMdCheckmark size={20} color='red' />
               </div>
             )}
-          </div>
-        </div>
-        <div className='route'>
-          {ticket.origin}&nbsp;— {ticket.destination}
-          <div className='time'>
-            {calculateFlightTime(ticket.duration)} в пути
           </div>
         </div>
         <div className='information'>

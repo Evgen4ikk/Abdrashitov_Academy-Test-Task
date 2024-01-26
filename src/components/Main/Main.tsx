@@ -32,68 +32,66 @@ const Main: FC = () => {
 
   return (
     <div className='main'>
-      <>
-        <div className='menu'>
-          <div className='list'>
-            <h4 className='title'>Пересадки</h4>
-            <div className='checkbox'>
-              {[0, 1, 2, 3].map(transferCount => (
-                <label key={transferCount} className='label'>
-                  <input
-                    type='checkbox'
-                    className='input'
-                    checked={transfers.includes(transferCount)}
-                    onChange={() => handleTransfersChange(transferCount)}
-                  />
-                  <span className='mark'></span>
-                  <span className='name'>{`${
-                    transferCount === 0 ? 'Без' : transferCount
-                  } пересад${transferCount !== 1 ? 'ки' : 'ка'}`}</span>
-                </label>
-              ))}
-            </div>
-            <div className='price'>
-              <h4 className='title'>Цена</h4>
-              <div className='price-slider'>
-                <div className='price-label'>
-                  <div className='total'>Всего</div>
-                  <div className='max-price'>До {maxValue} ₽</div>
-                </div>
-                <Slider
-                  min={0}
-                  max={50000}
-                  step={337}
-                  value={maxValue}
-                  onChange={handleSliderChange}
+      <div className='menu'>
+        <div className='list'>
+          <h4 className='title'>Пересадки</h4>
+          <div className='checkbox'>
+            {[0, 1, 2, 3].map(transferCount => (
+              <label key={transferCount} className='label'>
+                <input
+                  type='checkbox'
+                  className='input'
+                  checked={transfers.includes(transferCount)}
+                  onChange={() => handleTransfersChange(transferCount)}
                 />
+                <span className='mark'></span>
+                <span className='name'>{`${
+                  transferCount === 0 ? 'Без' : transferCount
+                } пересад${transferCount !== 1 ? 'ки' : 'ка'}`}</span>
+              </label>
+            ))}
+          </div>
+          <div className='price'>
+            <h4 className='title'>Цена</h4>
+            <div className='price-slider'>
+              <div className='price-label'>
+                <div className='total'>Всего</div>
+                <div className='max-price'>До {maxValue} ₽</div>
               </div>
-              <label className='radio'>
-                <input
-                  type='checkbox'
-                  className='input'
-                  name='price'
-                  onChange={handleSortByPriceChange}
-                />
-                <span className='mark'></span>
-                <span className='name'>Сначала дешёвые</span>
-              </label>
+              <Slider
+                min={0}
+                max={50000}
+                step={337}
+                value={maxValue}
+                onChange={handleSliderChange}
+              />
             </div>
-            <h4 className='title'>Время в пути</h4>
-            <div className='time'>
-              <label className='radio'>
-                <input
-                  type='checkbox'
-                  className='input'
-                  name='duradion'
-                  onChange={handleSortByDurationChange}
-                />
-                <span className='mark'></span>
-                <span className='name'>Самый быстрый</span>
-              </label>
-            </div>
+            <label className='radio'>
+              <input
+                type='checkbox'
+                className='input'
+                name='price'
+                onChange={handleSortByPriceChange}
+              />
+              <span className='mark'></span>
+              <span className='name'>Сначала дешёвые</span>
+            </label>
+          </div>
+          <h4 className='title'>Время в пути</h4>
+          <div className='time'>
+            <label className='radio'>
+              <input
+                type='checkbox'
+                className='input'
+                name='duradion'
+                onChange={handleSortByDurationChange}
+              />
+              <span className='mark'></span>
+              <span className='name'>Самый быстрый</span>
+            </label>
           </div>
         </div>
-      </>
+      </div>
       <TicketList
         transfers={transfers}
         maxValue={maxValue}

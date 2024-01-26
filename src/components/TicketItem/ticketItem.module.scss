@@ -157,4 +157,20 @@
       }
     }
   }
+
+  .arrow {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .departure {
+      display: none;
+    }
+
+    .arrow {
+      display: block;
+    }
+
+    width: 400px;
+  }
 }
